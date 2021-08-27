@@ -8,13 +8,16 @@
 /* OUTPUT : ACCESS AUTHORITY                                          */
 /* CALL BY: USER                                                      */
 /* REMARKS: NONE                                                      */
-/* ---- ------------------------------------------------------------- */
+/* ------------------------------------------------------------------ */
 Say 'TYPE THE DATASET NAME TO CHECK YOUR ACCESS AUTHORITY:'
 Pull DNAME                                 /* Read data set name.     */
 
 If DNAME = '' Then                         /* Dataset name empty.     */
    Say 'NO INPUT RECEIVED!! RE-EXECUTE AND TRY AGAIN'
-Else Do
+Else
+Do
+   DNAME = Strip(DNAME,,"'")               /* Remove single quotes    */
+   DNAME = Strip(DNAME,,'"')               /* Remove double quotes    */
    x = OUTTRAP('LINE.')                    /* Trap TSO command output.*/
    "LD DA('" || DNAME || "') G"            /* Get the access authority*/
    y = OUTTRAP('OFF')
@@ -37,7 +40,7 @@ Else Do
             access = LINE.J
             Say 'YOU HAVE' Word(access,1) 'ACCESS TO THIS DATASET.'
          End
-         Otherwise Say 'UNKNOWN ERROR FOUND!!' LINE.1
+         Otherwise nop
       End
    End
 End
