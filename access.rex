@@ -1,7 +1,7 @@
 /* REXX ------------------------------------------------------------- */
 /* NAME   : ACCESS                                                    */
 /* DATE   : 08/27/2021                                                */
-/* CREATED: DANIEL CASTRO                                             */
+/* CREATED: DAN                                                       */
 /* PURPOSE: FINDING OUT WHAT ACCESS AUTHORITY YOU HAVE TO A DATA SET  */
 /* PARAMS : NONE                                                      */
 /* INPUT  : DATASETNAME                                               */
